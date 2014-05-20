@@ -1,0 +1,24 @@
+/*mergeList function that merge two list into one using recursion
+*param a pointer to fist list
+*param b pointer to second list
+*return pointer to list merged 
+*/
+
+NODO* mergeList(NODO *a, NODO *b){
+	NODO *temp = NULL;
+	if (a == NULL)return(b);
+	else if (b == NULL)return(a);
+	if (a->data == b->data){
+		a = a->next;
+		return b;
+	}
+	if (a->data<b->data){
+		temp = a;
+		temp->next = mergeList(a->next, b);
+	}
+	else {
+		temp = b;
+		temp->next = mergeList(a, b->next);
+	}
+	return temp;
+}
